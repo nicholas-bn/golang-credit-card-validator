@@ -10,7 +10,6 @@ import (
 	"github.com/nicholas-bn/golang-credit-card-validator/utilities"
 )
 
-// func PlayerServer(w http.ResponseWriter, r *http.Request) {
 func CardValidatorServer(w http.ResponseWriter, r *http.Request) {
 
 	// Check http verb

@@ -1,12 +1,26 @@
 package main
 
 import (
-	"fmt"
+	"log"
+	"net/http"
 
-	"github.com/nicholas-bn/golang-credit-card-validator/algorithm"
+	"github.com/nicholas-bn/golang-credit-card-validator/server"
 )
 
 func main() {
-	fmt.Println(algorithm.LuhnAlgorithm([]int{1, 9, 4, 1, 1, 0, 6, 0, 6, 9, 0, 9, 1, 2}))
-	// fmt.Println(algorithm.LuhnAlgorithm([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 1}))
+	// if len(os.Args) > 1 {
+	// 	portStr := os.Args[1]
+	// 	portInt, err := strconv.Atoi(portStr)
+	// 	if err != nil {
+	// 		fmt.Printf("error retrieving the port input parameter: %s\n", err)
+	// 		os.Exit(1)
+	// 	}
+	// 	api.Server(portInt)
+	// } else {
+	// 	api.Server(8080)
+	// }
+
+	handler := http.HandlerFunc(server.CardValidatorServer)
+	log.Fatal(http.ListenAndServe(":8080", handler))
+
 }

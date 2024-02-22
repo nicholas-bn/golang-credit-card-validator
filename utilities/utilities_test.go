@@ -13,7 +13,7 @@ func TestStringToIntListOK12345(t *testing.T) {
 		t.Fatalf(`StringToIntList("%s") produced an unexpected error: %s`, in, err)
 	}
 	if !slices.Equal(want, out) {
-		t.Fatalf(`Hello(%s) = %q, %v, want match for %#q, nil`, in, out, err, want)
+		t.Fatalf(`StringToIntList(%s) = %q, %v, want match for %#q, nil`, in, out, err, want)
 	}
 }
 

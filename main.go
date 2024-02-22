@@ -20,6 +20,15 @@ func main() {
 	// 	api.Server(8080)
 	// }
 
+	// input := server.InputJson{}
+	// fmt.Println(input.CardNumber)
+	// if input.CardNumber == "" {
+	// 	fmt.Println("IN")
+	// } else {
+	// 	fmt.Println("OUT")
+	// }
+
+	log.Println("Starting the server...")
 	handler := http.HandlerFunc(server.CardValidatorServer)
 	log.Fatal(http.ListenAndServe(":8080", handler))
 

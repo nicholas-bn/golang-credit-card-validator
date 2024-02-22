@@ -1,6 +1,9 @@
 package algorithm
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestLuhnAlgorithmOK(t *testing.T) {
 	dataset := [][]int{
@@ -13,9 +16,11 @@ func TestLuhnAlgorithmOK(t *testing.T) {
 		{6, 0, 1, 1, 3, 2, 0, 8, 9, 8, 9, 9, 2, 8, 2, 7},
 	}
 	for _, v := range dataset {
-		if !LuhnAlgorithm(v) {
-			t.Fatalf(`Hello(%v) = false, expected a true`, v)
-		}
+		t.Run(fmt.Sprintf("assert that %v is valid", v), func(t *testing.T) {
+			if !LuhnAlgorithm(v) {
+				t.Fatalf(`Hello(%v) = false, expected a true`, v)
+			}
+		})
 	}
 }
 
@@ -29,8 +34,10 @@ func TestLuhnAlgorithmNOTOK(t *testing.T) {
 		{4, 9, 1, 6, 8, 0, 7, 5, 8, 8, 8, 1, 2, 2, 8, 7},
 	}
 	for _, v := range dataset {
-		if LuhnAlgorithm(v) {
-			t.Fatalf(`Hello(%v) = true, expected a false`, v)
-		}
+		t.Run(fmt.Sprintf("assert that %v is NOT valid", v), func(t *testing.T) {
+			if LuhnAlgorithm(v) {
+				t.Fatalf(`Hello(%v) = true, expected a false`, v)
+			}
+		})
 	}
 }
